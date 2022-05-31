@@ -1,7 +1,7 @@
 const readline = require('readline');
 let rl = readline.createInterface(process.stdin, process.stdout);
 
-const { writeFileSync, readFile } = require("fs");
+const { writeFile, readFile } = require("fs");
 
 let persona = {
     name: "",
@@ -19,7 +19,9 @@ rl.question ('Name: ', response => {
 
         rl.question ('Age: ', response => {
             persona.age = response;
-            writeFileSync('persona.json',  JSON.stringify( persona ) );
+            writeFile('persona.json',  JSON.stringify( persona ), err => {
+                console.log( err );
+            });
             
             readFile('persona.json', 'utf-8', (err, data) => {
             
