@@ -6,7 +6,7 @@ router.get( "/", profesionalesCtrl.getStart );
 
 router.get( "/profesionales", profesionalesCtrl.getProfesionales );
 
-// router.get( "/profesionales/:id", profesionalesCtrl.getProfesionalParams );
+router.get( "/profesionales/:id", profesionalesCtrl.getProfesionalesParams );
 
 router.post( "/profesionales", profesionalesCtrl.postProfesionales );
 

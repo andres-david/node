@@ -15,6 +15,29 @@ function getStart( request, response ){
     next();
 }
 
+function getProfesionalesParams( request, response ){
+    let id = request.params.id;
+
+    if( profesionales != null && id == putProfesionales.id ){
+        
+        for( let i = 0; i < profesionales.length; i++ ){
+
+            if( id == profesionales[i].id ){
+
+                response.send( profesionales[i] );
+
+            }
+            else{
+                response.send( {error: true, codigo: 200, mensaje: "El usuario no existe"} );
+            }
+
+        }
+        
+    }
+
+
+}
+
 function getProfesionales( request, response ){
 
     let respuesta;
@@ -121,4 +144,4 @@ function deleteProfesionales( request, response ){
 }
 
 
-module.exports = {getStart, getProfesionales, postProfesionales, putProfesionales, deleteProfesionales}
+module.exports = {getStart, getProfesionales, getProfesionalesParams, postProfesionales, putProfesionales, deleteProfesionales}
