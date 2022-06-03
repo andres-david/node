@@ -1,30 +1,3 @@
-<<<<<<< HEAD
-let readConsole = ( callback ) => {
-
-    const readline = require('readline');
-    let rl = readline.createInterface(process.stdin, process.stdout);
-
-    const { writeFileSync, readFile } = require("fs");
-
-=======
-const readline = require('readline');
-
-function pregunta ( pregunta ){
-    const question = new Promise(( resolve, reject ) => {
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout,
-        });
-        rl.question( pregunta, ( respuesta ) => {
-            resolve( respuesta );
-            rl.close();
-        });
-
-    });
-
-    return question;
-
-}
 
 
 let readConsole = () => {
@@ -64,7 +37,6 @@ let readConsole = () => {
 
 
 let readConsoleAsync = async ( ) => {
->>>>>>> dia2
 
     let persona = {
         name: "",
@@ -72,7 +44,6 @@ let readConsoleAsync = async ( ) => {
         age: ""
     }
 
-<<<<<<< HEAD
     rl.question ('Name: ', response => {
         persona.name = response;
         
@@ -92,7 +63,6 @@ let readConsoleAsync = async ( ) => {
 
     // return persona;
 
-=======
     try {
 
         persona.name    = await pregunta( 'Name: ' );
@@ -113,15 +83,10 @@ let readConsoleAsync = async ( ) => {
         console.log( error );
         
     }
->>>>>>> dia2
 
 }
 
 module.exports = {
-<<<<<<< HEAD
-    readConsole
-=======
     readConsole,
     readConsoleAsync
->>>>>>> dia2
 }

@@ -3,13 +3,6 @@ let readConsole = require('./readConsole');
 
 let path = 'persona.json'
 
-<<<<<<< HEAD
-readConsole.readConsole( (persona) => {
-
-    writeAndRead.writeAndRead(path, persona);
-
-})
-=======
 let readAsync = async ( ) => {
 
     let obj = await readConsole.readConsoleAsync( );
@@ -32,4 +25,3 @@ readConsole.readConsole()
 
 
 
->>>>>>> dia2
