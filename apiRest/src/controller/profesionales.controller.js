@@ -18,24 +18,18 @@ function getStart( request, response ){
 function getProfesionalesParams( request, response ){
     let id = request.params.id;
 
-    if( profesionales != null && id == putProfesionales.id ){
-        
-        for( let i = 0; i < profesionales.length; i++ ){
+    let respuesta;
 
-            if( id == profesionales[i].id ){
+    if( profesionales.length > id ){
 
-                response.send( profesionales[i] );
+        respuesta = profesionales[id];
 
-            }
-            else{
-                response.send( {error: true, codigo: 200, mensaje: "El usuario no existe"} );
-            }
-
-        }
-        
+    }
+    else{
+        respuesta = {error: true, codigo: 200, mensaje: "El usuario no existe"};
     }
 
-
+    response.send( respuesta );
 }
 
 function getProfesionales( request, response ){
@@ -73,35 +67,25 @@ function postProfesionales( request, response ){
 
 function putProfesionales( request, response ){
 
+    let id = request.body.id;
+
     let respuesta;
 
-    if( profesionales != null ){
+    if( profesionales.length > id ){
 
-        for( let i = 0; i < profesionales.length; i++ ){
+        profesionales[id].name   = request.body.name;
+        profesionales[id].age    = request.body.age;
+        profesionales[id].genre  = request.body.genre;
+        profesionales[id].weight = request.body.weight;
+        profesionales[id].height = request.body.height;
 
-            if( i == request.body.id ){
-                
-                profesionales[i].name   = request.body.name;
-                profesionales[i].age    = request.body.age;
-                profesionales[i].genre  = request.body.genre;
-                profesionales[i].weight = request.body.weight;
-                profesionales[i].height = request.body.height;
-
-                respuesta = {error: false, codigo: 200, 
-                    mensaje: 'Usuario actualizado', resultado: profesionales};
-
-            }
-            else{
-                respuesta = { error: true, codigo: 200, 
-                            mensaje: 'Profesional no existente', resultado: profesionales}
-            }
-
-        }
+        respuesta = {error: false, codigo: 200, 
+            mensaje: 'Usuario actualizado', resultado: profesionales};
 
     }
     else{
         respuesta = { error: true, codigo: 200, 
-                    mensaje: 'No hay profesionales en la lista', resultado: profesionales}
+                    mensaje: 'Profesional no existente', resultado: profesionales}
     }
 
     response.send( respuesta );
@@ -110,33 +94,23 @@ function putProfesionales( request, response ){
 
 function deleteProfesionales( request, response ){
 
+    let id = request.body.id;
+
     let respuesta;
 
-    if( profesionales != null ){
+    if( profesionales.length > id ){
 
-        for( let i = 0; i < profesionales.length; i++ ){
+        profesionales.splice( id, 1 );
 
-            if( i == request.body.id ){
-
-                profesionales.splice(i, 1);
-
-                respuesta = {error: false, codigo: 200, 
+        respuesta = {error: false, codigo: 200,
                     mensaje: 'Usuario eliminado', resultado: profesionales};
-
-            }
-            else{
-
-                respuesta = {error: false, codigo: 200, 
-                    mensaje: 'El usuario no existe', resultado: profesionales};
-
-            }
-
-        }
 
     }
     else{
-        respuesta = { error: true, codigo: 200, 
-                    mensaje: 'No hay profesionales en la lista', resultado: profesionales}
+
+        respuesta = {error: true, codigo: 200, 
+            mensaje: 'El usuario no existe', resultado: profesionales};
+
     }
 
     response.send( respuesta );

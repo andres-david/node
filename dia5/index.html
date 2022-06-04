@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <script src="claseProfesional.js"></script>
+    <script src="main.js"></script>
 </head>
 <body>
 
@@ -36,27 +39,58 @@
 
                 <form id="form">
 
-                    <input type="text" placeholder="Nombre*">
-                    <input type="text" placeholder="Apellidos*">
-                    <input type="text" placeholder="Teléfono*">
-                    <input type="text" placeholder="Correo electrónico*">
-                    <textarea name="mensaje" id="mensaje" placeholder="Mensaje..." cols="30" rows="8"></textarea>
+                    <input type="text" id="nombre" placeholder="Nombre*">
+                    <input type="text" id="edad" placeholder="Edad*">
+                    <input type="text" id="genero" placeholder="Género*">
+                    <input type="text" id="peso" placeholder="Peso*">
+                    <input type="text" id="altura" placeholder="Altura*">
+                    <input type="number" id="id" placeholder="id" min="0">                 
+                    
+                
+                    <div class="btns">
+                        
+                        <a id="btn__mostrar" href="#" onclick="getProfesional()">Mostrar</a>
+                        <a id="btn__crear" href="#" onclick="postProfesional()">Crear</a>
+                        <a id="btn__actualizar" href="#" onclick="putProfesional()">Actualizar</a>
+                        <a id="btn__eliminar" href="#" onclick="deleteProfesional()">Eliminar</a>
 
-                    <input type="checkbox" id="terminos" name="terminos" value="">
-                    <label for="terminos" class="terminos">
-                         He leído y acepto la política de privacidad y las condiciones* 
-                        <br>Leer la Politica de privacidad y las Condiciones legales
-                    </label><br>
-
-                    <div class="btn__form">
-                        <a href="#">Enviar</a>
                     </div>
-
+                
                 </form>
 
             </div>
 
         </main>
+
+        <div class="list__profesionales">
+
+            <table class="table" style="width: 80%; margin: 0 auto;">
+
+                <thead>
+                    
+                    <tr>
+                    
+                        <th>Nombre</th>
+                    
+                        <th>Edad</th>
+                    
+                        <th>Género</th>
+    
+                        <th>Peso</th>
+    
+                        <th>Altura</th>
+                    
+                    </tr>
+
+                </thead>
+
+                <tbody class="body__list">
+                  
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
     
